@@ -78,8 +78,11 @@ public class ServicedSession extends RemoteSession {
       HttpRequest request = new HttpRequest(HttpMethod.DELETE, "/session/" + getId());
       HttpResponse ignored = new HttpResponse();
       execute(request, ignored);
+      new JMXHelper().unregister(this.getObjectName());
     } catch (IOException e) {
       // This is fine.
+    } catch (MalformedObjectNameException e) {
+      System.out.println("NO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     service.stop();
