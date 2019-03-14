@@ -81,8 +81,7 @@ public class ServicedSession extends RemoteSession {
       new JMXHelper().unregister(this.getObjectName());
     } catch (IOException e) {
       // This is fine.
-    } catch (MalformedObjectNameException e) {
-      System.out.println("NO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    } catch (MalformedObjectNameException ignore) {
     }
 
     service.stop();
